@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SirM2z/wiki.svg?branch=master)](https://travis-ci.org/SirM2z/wiki)
+
 # 个人 wiki
 
 存放以下且不限于：
