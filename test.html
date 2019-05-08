@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimum-scale=1,maximum-scale=1">
+  <title>Document</title>
+  <style>
+    .multi-no-wrap {
+      line-height: 32px;
+      border: 1px solid #eee;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .word-break{
+      word-break: break-all;
+    }
+    .word-wrap{
+      word-wrap: break-word;
+    }
+    .single-line {
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+    .box {
+      display: flex;
+      animation: name duration timing-function delay iteration-count direction fill-mode;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p class="single-line">
+      多行文字, 超长溢出将会在最后一行显示省略号, 啦啦啦啦啦我是为了凑数啦啦啦啦啦我是为了凑数
+    </p>
+    <p class="multi-no-wrap word-break word-wrap">
+      多行文字, 超长溢出将会在最后一行显示省略号, 啦啦啦啦啦我是为了凑数啦啦啦啦啦我是为了凑数
+    </p>
+  </div>
+  
+  
+  <p class="multi-no-wrap word-wrap">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+  <p class="multi-no-wrap word-break">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+  
+</body>
+</html>

@@ -1,8 +1,39 @@
 module.exports = {
   title: "Ryan's wiki",
   description: 'Just playing around',
-  base: '/wiki/', // 引用 public 中静态资源： $withBase('/foo.png')
-  markdown: {
-    lineNumbers: true
-  }
+  base: '/wiki/', // 引用 public 中静态资源： <img :src="$withBase('/logo.png')" alt="foo">
+  markdown: {},
+  themeConfig: {
+    lastUpdated: '上次更新',
+    nav: [
+      { text: '前端', link: '/frontend/' },
+      { text: '关于我', link: 'https://sirm2z.github.io/about/' },
+      { text: 'Github', link: 'https://github.com/SirM2z/wiki' },
+    ],
+    sidebar: {
+      '/frontend/': [
+        {
+          title: '前端',
+          collapsable: false,
+          sidebarDepth: 2,
+          children: [
+            ['', '介绍'],
+            'js',
+            'css',
+            'html',
+            'browser'
+          ]
+        }
+      ]
+    },
+    serviceWorker: {
+      // updatePopup: true // Boolean | Object, 默认值是 undefined.
+      // 如果设置为 true, 默认的文本配置将是: 
+      updatePopup: { 
+        message: "有新的内容可用。", 
+        buttonText: "刷新" 
+      }
+    }
+  },
+  plugins: ['@vuepress/back-to-top']
 }
