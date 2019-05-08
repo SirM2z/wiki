@@ -6,7 +6,8 @@ module.exports = {
   themeConfig: {
     lastUpdated: '上次更新',
     nav: [
-      { text: '前端', link: '/frontend/' },
+      { text: '前端', link: '/frontend/css' },
+      { text: '命令', link: '/command/git' },
       { text: '关于我', link: 'https://sirm2z.github.io/about/' },
       { text: 'Github', link: 'https://github.com/SirM2z/wiki' },
     ],
@@ -17,14 +18,23 @@ module.exports = {
           collapsable: false,
           sidebarDepth: 2,
           children: [
-            ['', '介绍'],
             'js',
             'css',
             'html',
             'browser'
           ]
         }
-      ]
+      ],
+      '/command/': [
+        {
+          title: '命令',
+          collapsable: false,
+          sidebarDepth: 2,
+          children: [
+            'git',
+          ]
+        }
+      ],
     },
     serviceWorker: {
       // updatePopup: true // Boolean | Object, 默认值是 undefined.
