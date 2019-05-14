@@ -152,3 +152,15 @@ html, body {
 - 给父元素定高
 - 父元素浮动（外层依然塌陷）
 - 父元素处于绝对定位（外层依然塌陷）
+
+## 按钮按压效果
+
+### 透明+缩放
+
+```css
+.press-btn:active {
+  transition: all 0.3s;
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+```
