@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /wiki.png
+heroImage: /logo.png
 heroText: Ryan's wiki
 tagline: 个人 wiki
 actionText: 快速查看 →
