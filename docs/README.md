@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: Ryan's wiki
 tagline: 个人 wiki
 actionText: 快速查看 →
-actionLink: /frontend/
+actionLink: /frontend/css/
 features:
 - title: 方便查看
   details: 记录个人常用 code snippets ，方便后续查看。
