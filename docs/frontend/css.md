@@ -1,10 +1,10 @@
-# css
+# CSS
 
-## felx
+## Felx
 
 [flex 工具以及属性介绍](http://sirm2z.github.io/a_project/flexbox-cssgrid/index.html)
 
-## animation
+## Animation
 
 ```css
 animation: name duration timing-function delay iteration-count direction fill-mode;
