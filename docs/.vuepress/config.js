@@ -6,7 +6,7 @@ module.exports = {
   themeConfig: {
     lastUpdated: '上次更新',
     nav: [
-      { text: '前端', link: '/frontend/css' },
+      { text: '前端', link: '/frontend/js' },
       { text: '后端', link: '/backend/nestjs' },
       { text: '命令', link: '/command/git' },
       { text: '关于我', link: 'https://sirm2z.github.io/about/' },

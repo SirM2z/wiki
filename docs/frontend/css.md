@@ -1,5 +1,11 @@
 # CSS
 
+## 伪类
+处于dom树无法描述的状态下才能为元素添加样式，hover；
+
+## 伪元素
+创建一些不在文档树中的元素，before，双冒号（css3规定）
+
 ## Felx
 
 [flex 工具以及属性介绍](http://sirm2z.github.io/a_project/flexbox-cssgrid/index.html)
