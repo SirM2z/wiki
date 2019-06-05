@@ -1,6 +1,14 @@
 # JS
 
+## ReactJS
+
+### 生命周期
+
+![生命周期](https://raw.githubusercontent.com/SirM2z/assets/master/react-lifecycle.png)
+
 ## Script 元素渲染机制
+
+script 标签上设有 defer async 属性的影响
 
 ![script 元素渲染机制](https://raw.githubusercontent.com/SirM2z/assets/master/script_defer_async.png)
 ::: tip
@@ -213,11 +221,3 @@ includes(start = 0)
 ### flatMap(function)
 - 同flat一样，先执行map函数再进行拉平
 - 只能拉平一层
-
-## ReactJS
-
-### 生命周期
-
-![生命周期](https://raw.githubusercontent.com/SirM2z/assets/master/react-lifecycle.png)
-
-
