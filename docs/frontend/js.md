@@ -15,6 +15,72 @@ script 标签上设有 defer async 属性的影响
 defer 只对设置 src 的 script 标签起作用
 :::
 
+## 模块化
+
+### CommonJS
+
+NodeJS 所采用的模块化方案，简易实现：
+```js
+// a.js
+module.exports = "test conmmonjs require";
+
+// index.js
+const fs = require('fs');
+
+const requireSelf = (moduleName) => {
+  const content = fs.readFileSync(moduleName, 'utf8');
+  const fn = new Function('module', 'exports', 'require', '__dirname', '__filename', content + '\n return module.exports');
+  // fn 相当于如下函数
+  // function(module, exports, require, __dirname, __filename) {
+  //   content + 'return module.exports'
+  // }
+  let module = {
+    exports: {}
+  };
+  // const __dirname = __dirname;
+  // const __filename = __filename;
+  return fn(module, module.exports, requireSelf, __dirname, __filename);
+}
+
+const str = requireSelf('./a.js');
+console.log(str);
+```
+
+### AMD
+适合浏览器端的异步加载方案，如 `require.js`，简单实现：
+```js
+let factories = {};
+const define = (moduleName, dependencies, func) => {
+  // 将依赖挂载在函数上
+  func.dependencies = dependencies;
+  factories[moduleName] = func;
+}
+const _require = (mods, func) => {
+  const res = mods.map(moduleName => {
+    let factory = factories[moduleName];
+    let _exports;
+    let dependencies = factory.dependencies; // ['module1']
+    _require(dependencies, function() {
+      _exports = factory.apply(null, arguments);
+    });
+    return _exports;
+  })
+  func.apply(null, res);
+}
+
+define('module1', [], function() {
+  return 'module1'
+});
+
+define('module2', ['module1'], function(module1) {
+  return module1 + ' module2'
+});
+
+_require(['module2'], function(module2) {
+  console.log(module2); // module1 module2
+})
+```
+
 ## 原型链
 
 每个函数对象都含有一个原型对象，当访问某个对象的属性时，会先从自身属性查找（函数对象则从自身的原型对象中查找），若没有查到，就会从该对象的构造函数的原型对象中查找，这个查找过程就是原型链的体现
