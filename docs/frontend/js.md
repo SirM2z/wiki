@@ -1,11 +1,5 @@
 # JS
 
-## ReactJS
-
-### 生命周期
-
-![生命周期](https://raw.githubusercontent.com/SirM2z/assets/master/react-lifecycle.png)
-
 ## Script 元素渲染机制
 
 script 标签上设有 defer async 属性的影响
@@ -92,6 +86,36 @@ _require(['module2'], function(module2) {
 ## 节流
 
 每隔 n 毫秒调用一次方法，期间所有调用无效。常用 滚动事件 或 窗口 size 变化
+
+## ajax 实现
+
+```js
+document
+var isAsync = true; // 默认 true
+var xhr = new XMLHttpRequest();
+// document.cookie = 'abc';
+// xhr.withCredentials = true; // 跨域携带 cookie
+xhr.open('GET', 'url', isAsync);
+xhr.onreadystatechange = function() {
+  // 0 尚未调用 open
+  // 1 调用 open 但还未 send
+  // 2 已执行 send
+  // 3 接收到数据
+  // 4 请求完成
+  if (xhr.readyState === 4) {
+    if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+      console.log(xhr.response);
+    }
+  }
+};
+xhr.send();
+```
+
+## ReactJS
+
+### 生命周期
+
+![生命周期](https://raw.githubusercontent.com/SirM2z/assets/master/react-lifecycle.png)
 
 ## Array
 

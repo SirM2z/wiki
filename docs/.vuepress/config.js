@@ -22,6 +22,7 @@ module.exports = {
             'js',
             'css',
             'html',
+            'crossDomain',
             'browser'
           ]
         }
