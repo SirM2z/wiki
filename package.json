@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/SirM2z/wiki#readme",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
-    "vuepress": "^1.0.0-alpha.47"
+    "@vuepress/plugin-back-to-top": "^1.0.1",
+    "vuepress": "^1.0.1"
   }
 }
