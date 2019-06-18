@@ -9,8 +9,11 @@ deploy:
   local_dir: docs/.vuepress/dist
   github_token: ${github_token}
   keep_history: true
+  branches:
+    only:
+      - github.io
   on:
-    branch: master
+    branch: github.io
 
 # 跳过构建
 # git commit -m "[ci skip] commit message"
