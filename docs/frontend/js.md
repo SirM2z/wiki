@@ -90,7 +90,6 @@ _require(['module2'], function(module2) {
 ## ajax 实现
 
 ```js
-document
 var isAsync = true; // 默认 true
 var xhr = new XMLHttpRequest();
 // document.cookie = 'abc';
