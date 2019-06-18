@@ -8,6 +8,7 @@ module.exports = {
     nav: [
       { text: '前端', link: '/frontend/js' },
       { text: '后端', link: '/backend/nestjs' },
+      { text: '库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/git' },
       { text: '关于我', link: 'https://sirm2z.github.io/about/' },
       { text: 'Github', link: 'https://github.com/SirM2z/wiki' },
@@ -37,6 +38,16 @@ module.exports = {
           ]
         }
       ],
+      '/library/': [
+        {
+          title: '库',
+          collapsable: false,
+          sidebarDepth: 2,
+          children: [
+            'html2canvas',
+          ]
+        }
+      ],
       '/command/': [
         {
           title: '命令',
@@ -57,5 +68,13 @@ module.exports = {
       }
     }
   },
-  plugins: ['@vuepress/back-to-top']
+  plugins: [
+    '@vuepress/back-to-top',
+    [ 
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-140679869-2'
+      }
+    ]
+  ]
 }

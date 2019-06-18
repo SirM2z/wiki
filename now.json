@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "vuepress",
+  "alias": "wiki.ryanc.top",
+  "builds": [
+      { "src": "package.json", "use": "@now/static-build" }
+  ]
+}
