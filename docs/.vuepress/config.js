@@ -21,6 +21,7 @@ module.exports = {
           sidebarDepth: 2,
           children: [
             'js',
+            'react',
             'css',
             'html',
             'crossDomain',
