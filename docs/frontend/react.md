@@ -79,7 +79,7 @@ renderDom(el, document.getElementById('root'));
 
 简单实现效果：![VertualDom Diff](https://raw.githubusercontent.com/SirM2z/assets/master/20190627140348.png)
 
-<iframe width="100%" height="400" src="//jsfiddle.net/coolmrz/8jo7sxqw/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+[jsfiddle](https://jsfiddle.net/coolmrz/8jo7sxqw/)
 
 暂未实现：
 - 同级元素根据 `key` 进行移动
