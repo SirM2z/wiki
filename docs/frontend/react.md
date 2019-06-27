@@ -75,4 +75,146 @@ renderDom(el, document.getElementById('root'));
 
 1. `Web UI` 中 `DOM` 节点跨层级的移动操作特别少，可以忽略不计
 2. 拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构
-3. 对于同一层级的一组子节点，它们可以通过唯一 `id(key)` 进行区分
+3. 对于同一层级的一组子节点，它们可以通过唯一 `id (key)` 进行区分
+
+简单实现效果：![VertualDom Diff](https://raw.githubusercontent.com/SirM2z/assets/master/20190627140348.png)
+
+<iframe width="100%" height="400" src="//jsfiddle.net/coolmrz/8jo7sxqw/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+暂未实现：
+- 同级元素根据 `key` 进行移动
+
+具体实现：
+```js
+// vertual dom diff
+let Index = 0; // the node index of tree, begin from 0
+let patches = {}; // the patches between old & new vertual dom
+const ATTRS = 'ATTRS';
+const TEXT = 'TEXT';
+const REMOVE = 'REMOVE';
+const REPLACE = 'REPLACE';
+
+function isString(node) {
+  return Object.prototype.toString.call(node) === "[object String]";
+}
+
+function diffAttr(oldAttrs, newAttrs) {
+  let patch = {};
+  // change attr
+  for(let key in oldAttrs) {
+    if(oldAttrs[key] !== newAttrs[key]) {
+      patch[key] = newAttrs[key];
+    }
+  }
+  // new attr
+  for(let key in newAttrs) {
+    if(!oldAttrs.hasOwnProperty(key)) {
+      patch[key] = newAttrs[key];
+    }
+  }
+  return patch;
+}
+
+function walk(oldNode, newNode, index) {
+  let currentPatch = [];
+  if (!newNode) {
+    // remove node from old tree  
+    currentPatch.push({type: REMOVE, index});
+  } else if (isString(oldNode) && isString(newNode)) {
+    // text node
+    if (oldNode !== newNode) {
+      currentPatch.push({type: TEXT, text: newNode});
+    }
+  } else if (oldNode.type === newNode.type) {
+    const attrs = diffAttr(oldNode.props, newNode.props);
+    if (Object.keys(attrs).length > 0) {
+      currentPatch.push({type: ATTRS, attrs});
+    }
+    diffChildren(oldNode.children, newNode.children);
+  } else {
+    currentPatch.push({type: REPLACE, newNode});
+  }
+  if (currentPatch.length > 0) {
+    patches[index] = currentPatch;
+  }
+}
+
+function diffChildren(oldChildren, newChildren) {
+  oldChildren.forEach((child, index) => {
+    walk(child, newChildren[index], ++Index);
+  })
+}
+
+function diff(oldTree, newTree) {
+  walk(oldTree, newTree, Index);
+}
+
+// path to old dom
+let indexPatch = 0;
+function doPatch(node, currentPatch) {
+  currentPatch.forEach(patch => {
+    switch(patch.type) {
+      case ATTRS:
+        for(let key in patch.attrs) {
+          const value = patch.attrs[key];
+          if (value) {
+            setAttr(node, key, value);
+          } else {
+            node.removeAttribute(key);
+          }
+        }
+        break;
+      case TEXT:
+        node.textContent = patch.text;
+        break;
+      case REMOVE:
+        node.parentNode.removeChild(node);
+        break;
+      case REPLACE:
+        const newNode = patch.newNode instanceof Element ? render(patch.newNode) : document.createTextNode(patch.newNode);
+        node.parentNode.replaceChild(newNode, node);
+        break;
+      default:
+        break;
+    }
+  })
+}
+
+function walkPatch(node) {
+  const currentPatch = patches[indexPatch++];
+  node.childNodes.forEach(child => {
+    walkPatch(child);
+  });
+  if(currentPatch && currentPatch.length > 0) {
+    doPatch(node, currentPatch);
+  }
+}
+
+function patch(node) {
+  walkPatch(node);
+}
+
+// Usage
+const vertualDom1 = createElement('ul', {calss: 'list'}, [
+  createElement('li', {class: 'item'}, ['a']),
+  createElement('li', {class: 'item'}, ['b']),
+  createElement('li', {class: 'item'}, ['c']),
+]);
+
+const vertualDom2 = createElement('ul', {calss: 'list-group'}, [
+  createElement('li', {class: 'item'}, ['1']),
+  createElement('li', {class: 'lightcoral'}, ['b']),
+  createElement('div', {class: 'item'}, ['3']),
+]);
+
+// use vertual dom
+const el = render(vertualDom1);
+renderDom(el, document.getElementById('root'));
+
+// use vertual dom diff generate patches
+diff(vertualDom1, vertualDom2);
+console.log("patches: ", patches);
+
+// use patch
+patch(el);
+```
