@@ -6,7 +6,7 @@
 
 ## VertualDom
 
-实现效果：![VertualDom](https://raw.githubusercontent.com/SirM2z/assets/master/20190624174255.png)
+实现效果：![VertualDom](https://raw.githubusercontent.com/SirM2z/assets/master/vertual-dom.png)
 
 具体实现：
 ```js
@@ -77,7 +77,7 @@ renderDom(el, document.getElementById('root'));
 2. 拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构
 3. 对于同一层级的一组子节点，它们可以通过唯一 `id (key)` 进行区分
 
-简单实现效果：![VertualDom Diff](https://raw.githubusercontent.com/SirM2z/assets/master/20190627140348.png)
+简单实现效果：![VertualDom Diff](https://raw.githubusercontent.com/SirM2z/assets/master/vertual-dom-diff.png)
 
 [jsfiddle](https://jsfiddle.net/coolmrz/8jo7sxqw/)
 
