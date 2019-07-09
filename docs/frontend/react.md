@@ -218,3 +218,171 @@ console.log("patches: ", patches);
 // use patch
 patch(el);
 ```
+
+## React-Router 权限实现
+
+借鉴官方[Route Config 例子](https://reacttraining.com/react-router/web/example/route-config)
+
+[jsfiddle](https://jsfiddle.net/coolmrz/3Lzpxyjb/)
+
+```jsx
+import React from 'react';
+
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+
+// mock login status
+const isLogin = false;
+
+// Some folks find value in a centralized route config.
+// A route config is just data. React is great at mapping
+// data into components, and <Route> is a component.
+
+////////////////////////////////////////////////////////////
+// first our route components
+function Login() {
+  return <h2>Login</h2>;
+}
+
+function User() {
+  return <h3>User</h3>;
+}
+
+function Product() {
+  return <h3>Product</h3>;
+}
+
+function Order() {
+  return <h3>Order</h3>;
+}
+
+function NoMatch({location}) {
+  return (<h3>
+    No match for <code>{location.pathname}</code>
+  </h3>);
+}
+
+function Layout({ routes }) {
+  return (
+    <div>
+      <h2>Layout</h2>
+      <ul>
+        <li>
+          <Link to="/app/product">Product</Link>
+        </li>
+        <li>
+          <Link to="/app/order">Order</Link>
+        </li>
+        <li>
+          <Link to="/app/user">User (need login)</Link>
+        </li>
+      </ul>
+      <Switch>
+        {routes.map((route, i) => RouteWithSubRoutes(route, i))}
+        {/* <Redirect exact from="/app" to="/app/product" />
+        <Route path="/app/product" component={Product} />
+        <Route path="/app/order" component={Order} />
+        <Route path="/app/user" component={User} />
+        <Route component={NoMatch} /> */}
+      </Switch>
+    </div>
+  );
+}
+
+////////////////////////////////////////////////////////////
+// then our route config
+const routes = [
+  {
+    path: "/login",
+    component: Login
+  },
+  {
+    path: "/app",
+    component: Layout,
+    routes: [
+      {
+        path: "/app",
+        redirect: "/app/product"
+      },
+      {
+        path: "/app/product",
+        component: Product
+      },
+      {
+        path: "/app/order",
+        component: Order
+      },
+      {
+        path: "/app/user",
+        auth: true,
+        component: User
+      },
+      {
+        component: NoMatch
+      }
+    ]
+  },
+  {
+    component: NoMatch
+  }
+];
+
+// wrap <Route> and use this everywhere instead, then when
+// sub routes are added to any route it'll work
+function RouteWithSubRoutes(route, i) {
+  const uniqueKey = route.path || i;
+  if (route.redirect) {
+    return (
+      <Redirect key={uniqueKey + '-redirect'} exact from={route.path} to={route.redirect} />
+    )
+  } else {
+    return (
+      <Route
+        key={uniqueKey}
+        exact={!route.routes}
+        path={route.path}
+        render={props => {
+          // pass the sub-routes down to keep nesting
+          if (route.auth) {
+            if (isLogin) {
+              return <route.component key={uniqueKey} {...props} routes={route.routes} />
+            } else {
+              return <Redirect to={{
+                pathname: '/login',
+                state: {
+                  from: route.path
+                }
+              }} />
+            }
+          } else {
+            return <route.component key={uniqueKey} {...props} routes={route.routes} />
+          }
+        }}
+      />
+    );
+  }
+}
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <h3>Current login status: {isLogin.toString()}</h3>
+        <ul>
+          <li>
+            <Link to="/app">Layout (Redirect to Product)</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          {routes.map((route, i) => RouteWithSubRoutes(route, i))}
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
