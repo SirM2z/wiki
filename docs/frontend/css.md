@@ -6,6 +6,202 @@
 ## 伪元素
 创建一些不在文档树中的元素，before，双冒号（css3规定）
 
+## 两栏布局
+
+![效果图](https://raw.githubusercontent.com/SirM2z/assets/master/two-row-layout.png)
+
+`HTML` 结构如下
+```html
+<div class="container">
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+```
+
+### inline-block 与 calc 结合
+
+```css
+.container {
+  font-size: 0; /* 消除间距 */
+}
+.left {
+  display: inline-block;
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  display: inline-block;
+  width: calc(100% - 100px); /* 计算宽度，运算符号左右一定要有空格 */
+  height: 150px;
+  background-color: #94E8FF;
+}
+```
+
+### float 与 margin
+原理：块状元素无视浮动元素，利用 `margin` 预留空间
+```css
+.left {
+  float: left;
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  width: 100%;
+  margin-left: 100px; /* 为 .left 留出空间 */
+  height: 150px;
+  background-color: #94E8FF;
+}
+```
+
+### float 与 calc
+原理：均浮动，计算右侧宽度
+```css
+.container {
+  overflow: hidden;
+}
+.left {
+  float: left;
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  float: left;
+  width: calc(100% - 100px); /* 计算宽度，运算符号左右一定要有空格 */
+  height: 150px;
+  background-color: #94E8FF;
+}
+```
+
+### float 与 BFC
+原理：`BFC` 不会忽视浮动元素，让 `.right` 形成 `BFC`
+```css
+.container {
+  overflow: hidden;
+}
+.left {
+  float: left;
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  overflow: auto; /* 形成 BFC */
+  height: 150px;
+  background-color: #94E8FF;
+}
+```
+
+### absolute
+原理：`absolute` 会脱离文档流
+```css
+.container {
+  position: relative;
+}
+.left {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  margin-left: 100px;
+  height: 150px;
+  background-color: #94E8FF;
+}
+```
+
+## 三栏布局
+
+![实现效果](https://raw.githubusercontent.com/SirM2z/assets/master/three-row-layout.png)
+两边固定宽度，中间自适应的三栏布局，并且主要内容要优先渲染，按照 DOM 从上至下的加载原则，中间的自适应部分要放在前面。`HTML` 结构如下
+```html
+<div class="container">
+  <div class="center">center</div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+```
+默认 `css` 样式如下
+```css
+body {
+  min-width: 630px;
+}
+.center {
+  width: 100%;
+  height: 150px;
+  background-color: #94E8FF;
+}
+.left {
+  width: 100px;
+  height: 150px;
+  background-color: #FFB5BF;
+}
+.right {
+  width: 200px;
+  height: 150px;
+  background-color: #8990D5;
+}
+```
+
+### 圣杯布局
+原理：
+- 三个元素均设为 `float: left` 浮动元素
+- 设 `margin-left` 为负值将 `.left .right` 元素拉回与 `.center` 同行
+- 设 `.container` 的 `padding` 值缩小 `.center` 的宽度
+- 将 `.left .right` 通过 `relative` 定位回归左侧和右侧
+```css
+.container {
+  padding-right: 200px;
+  padding-left: 100px;
+}
+.center, .left, .right {
+  float: left; /* 设为浮动元素 */
+}
+.left {
+  margin-left: -100%; /* 外边距设为百分比时将参考父元素的宽度，设置 -100% 拉回到 center 左侧 */
+  position: relative;
+  left: -100px;
+}
+.right {
+  margin-left: -200px; /* 设置 -200px 将自己左移200px */
+  position: relative;
+  right: -200px;
+}
+```
+
+### 双飞翼布局
+原理（前两条同圣杯布局）：
+- 三个元素均设为 `float: left` 浮动元素
+- 设 `margin-left` 为负值将 `.left .right` 元素拉回与 `.center` 同行
+- 在 `.center` 中增加 `.main` 元素，设置 `.main` 元素的 `margin left right` 解决覆盖问题
+```html
+<div class="container">
+  <div class="center">
+    <div class="main">center</div>
+  </div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+```
+```css
+.center, .left, .right {
+  float: left;
+}
+.main {
+  margin-left: 100px;
+  margin-right: 200px;
+}
+.left {
+  margin-left: -100%;
+}
+.right {
+  margin-left: -200px;
+}
+```
+
 ## Felx
 
 [flex 工具以及属性介绍](http://sirm2z.github.io/a_project/flexbox-cssgrid/index.html)
