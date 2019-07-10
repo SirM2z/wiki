@@ -6,7 +6,7 @@ module.exports = {
   themeConfig: {
     lastUpdated: '上次更新',
     nav: [
-      { text: '前端', link: '/frontend/js' },
+      { text: '前端', link: '/frontend/html' },
       { text: '后端', link: '/backend/nestjs' },
       { text: '库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/git' },
@@ -20,10 +20,10 @@ module.exports = {
           collapsable: false,
           sidebarDepth: 2,
           children: [
+            'html',
+            'css',
             'js',
             'react',
-            'css',
-            'html',
             'crossDomain',
             'browser'
           ]

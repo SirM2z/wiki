@@ -1,14 +1,5 @@
 # JS
 
-## Script 元素渲染机制
-
-script 标签上设有 defer async 属性的影响
-
-![script 元素渲染机制](https://raw.githubusercontent.com/SirM2z/assets/master/script_defer_async.png)
-::: tip
-defer 只对设置 src 的 script 标签起作用
-:::
-
 ## 模块化
 
 ### CommonJS

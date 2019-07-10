@@ -81,8 +81,9 @@ renderDom(el, document.getElementById('root'));
 
 [jsfiddle](https://jsfiddle.net/coolmrz/8jo7sxqw/)
 
-暂未实现：
-- 同级元素根据 `key` 进行移动
+::: tip
+暂未实现：同级元素根据 `key` 进行移动
+:::
 
 具体实现：
 ```js
