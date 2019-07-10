@@ -116,7 +116,7 @@
 ## 三栏布局
 
 ![实现效果](https://raw.githubusercontent.com/SirM2z/assets/master/three-row-layout.png)
-两边固定宽度，中间自适应的三栏布局，并且主要内容要优先渲染，按照 DOM 从上至下的加载原则，中间的自适应部分要放在前面。`HTML` 结构如下
+两边固定宽度，中间自适应的三栏布局，并且主要内容要优先渲染，按照 `DOM` 从上至下的加载原则，中间的自适应部分要放在前面。`HTML` 结构如下
 ```html
 <div class="container">
   <div class="center">center</div>
@@ -149,8 +149,8 @@ body {
 ### 圣杯布局
 原理：
 - 三个元素均设为 `float: left` 浮动元素
-- 设 `margin-left` 为负值将 `.left .right` 元素拉回与 `.center` 同行
-- 设 `.container` 的 `padding` 值缩小 `.center` 的宽度
+- 将 `.left .right` 元素的 `margin-left` 设为负值而拉回与 `.center` 同行
+- 设 `.container` 的 `padding` 值而缩小 `.center` 的宽度
 - 将 `.left .right` 通过 `relative` 定位回归左侧和右侧
 ```css
 .container {
@@ -175,7 +175,7 @@ body {
 ### 双飞翼布局
 原理（前两条同圣杯布局）：
 - 三个元素均设为 `float: left` 浮动元素
-- 设 `margin-left` 为负值将 `.left .right` 元素拉回与 `.center` 同行
+- 将 `.left .right` 元素的 `margin-left` 设为负值而拉回与 `.center` 同行
 - 在 `.center` 中增加 `.main` 元素，设置 `.main` 元素的 `margin left right` 解决覆盖问题
 ```html
 <div class="container">
@@ -211,11 +211,11 @@ body {
 ```css
 animation: name duration timing-function delay iteration-count direction fill-mode;
 ```
-`animation-name` 规定需要绑定到选择器的 keyframe 名称。
+`animation-name` 规定需要绑定到选择器的 keyframe 名称
 
-`animation-duration` 规定完成动画所花费的时间，以秒或毫秒计。
+`animation-duration` 规定完成动画所花费的时间，以秒或毫秒计
 
-`animation-timing-function` 规定动画的速度曲线。
+`animation-timing-function` 规定动画的速度曲线
 
 | timing-function       | 描述           |
 | --------------------- | ------------- |
@@ -226,23 +226,23 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 | ease-in-out           | 动画以低速开始和结束 |
 | cubic-bezier(n,n,n,n) | 在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值 |
 
-`animation-delay` 规定在动画开始之前的延迟。
+`animation-delay` 规定在动画开始之前的延迟
 
-`animation-iteration-count` 规定动画应该播放的次数。
+`animation-iteration-count` 规定动画应该播放的次数
 
 | iteration-count | 描述           |
 | --------------- | ------------- |
 | n               | 定义动画播放次数的数值 |
 | infinite        | 规定动画应该无限次播放 |
 
-`animation-direction` 规定是否应该轮流反向播放动画。
+`animation-direction` 规定是否应该轮流反向播放动画
 
 | direction | 描述           |
 | --------- | ------------- |
 | normal    | 默认值。动画应该正常播放 |
 | alternate | 动画应该轮流反向播放 |
 
-`animation-fill-mode` 规定动画在播放之前或之后，其动画效果是否可见。
+`animation-fill-mode` 规定动画在播放之前或之后，其动画效果是否可见
 
 | fill-mode | 描述           |
 | --------- | ------------- |
@@ -251,8 +251,167 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 | backwards | 在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义） |
 | both      | 向前和向后填充模式都被应用 |
 
+## 常用 css 示例
 
-## 单/双行文本超出显示省略号
+### loading 效果
+<style>
+.css-loading-demo {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid #ddd;
+  border-left-color: #FFB5BF;
+  border-radius: 50%;
+  animation: css-loading-demo-animation 1.2s linear infinite;
+}
+@keyframes css-loading-demo-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+<div class="css-loading-demo"></div>
+
+```html
+<style>
+.loading {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid #ddd;
+  border-left-color: #FFB5BF;
+  border-radius: 50%;
+  animation: loading-animation 1.2s linear infinite;
+}
+@keyframes loading-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+<div class="loading"></div>
+```
+
+### 居中
+1. 行内元素使用 `text-aign:center;` 与 `line-height`
+2. 块状元素定宽使用 `margin: 0 auto;`
+3. 绝对定位
+    - 知道子元素宽度
+      ```css
+      .container {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+      }
+      ```
+    - 不知道子元素宽度
+      ```css
+      .container {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+      .item {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      ```
+4. `flex` 布局
+```css
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+### 三角形
+先设置一个宽高均为 0 的盒子，并设置 `border` 看下效果
+```css
+.box {
+  width: 0;
+  height: 0;
+  border-top: 50px solid #FFB5BF;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
+}
+```
+<style>
+.css-triangle-box {
+  width: 0;
+  height: 0;
+  border-top: 50px solid #FFB5BF;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
+}
+</style>
+<div class="css-triangle-box"></div>
+
+移除 `border-top` 效果
+<style>
+.css-triangle-box-rm-top {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
+}
+</style>
+<div class="css-triangle-box-rm-top"></div>
+
+可以发现，只需要修改对应的方向上的 `border` 即可实现三角形，如修改左右的 `border-color` 为 `transparent`
+<style>
+.css-triangle-box-lr-trans {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid transparent;
+  border-left: 50px solid transparent;
+}
+</style>
+<div class="css-triangle-box-lr-trans"></div>
+
+### 阴影 box-shadow
+`box-shadow: h-shadow v-shadow blur spread color inset;`
+- `h-shadow`：必需设置，表示水平阴影的位置，正值阴影向右，负值向左
+- `v-shadow`：必需设置，表示垂直阴影的位置，正值阴影向下，负值向上
+- `blur`：可选，代表模糊半径
+- `spread`：可选，阴影的尺寸
+- `color`：可选，阴影的颜色
+- `inset`：可选，使用该值可以将外部阴影（outset）转换成内部阴影
+
+将水平阴影和垂直阴影都设为 0，可以制造“发光”一样的特效：`box-shadow: 0 0 10px 2px #94E8FF;`
+<style>
+.css-box-shadow-0-light {
+  width: 100px;
+  height: 100px;
+  background-color: #FFB5BF;
+  box-shadow: 0 0 10px 2px #94E8FF;
+}
+</style>
+<div class="css-box-shadow-0-light"></div>
+
+### 单/双行文本超出显示省略号
 
 单行
 
@@ -277,7 +436,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 ```
 
-## 固定foot在页底
+### 固定 Foot 在页底
 
 ```html
 <div class="page-wrap">
@@ -313,14 +472,14 @@ html, body {
 }
 ```
 
-## 清除浮动
+### 清除浮动
 
-### 使用 :after 伪元素
+1. 使用 :after 伪元素
 ```css
-.clearfix { /*兼容 IE*/
-  zoom: 1;
+.clearfix {
+  zoom: 1; /*兼容 IE*/
 }
-.clearfix:after {  /*最简方式*/
+.clearfix:after { /*最简方式*/
   content: '';
   display: block;
   clear: both;
@@ -335,29 +494,27 @@ html, body {
 }
 ```
 
-### 利用overflow:hidden;属性
+2. 利用overflow:hidden;属性
 
 ```css
 .float {
   overflow: hidden;
-  zoom: 1;/*兼容 IE*/
+  zoom: 1; /*兼容 IE*/
 }
 ```
 
-### 额外标签法
+3. 额外标签法
 ```html
 <div class="clearfix" style="clear:both;"></div>
 ```
 
-### 其它方法
+4. 其它方法
 
 - 给父元素定高
 - 父元素浮动（外层依然塌陷）
 - 父元素处于绝对定位（外层依然塌陷）
 
-## 按钮按压效果
-
-### 透明+缩放
+### 按钮按压效果（透明+缩放）
 
 ```css
 .press-btn:active {
