@@ -66,9 +66,81 @@ _require(['module2'], function(module2) {
 })
 ```
 
-## 原型链
+## 创建对象
 
-每个函数对象都含有一个原型对象，当访问某个对象的属性时，会先从自身属性查找（函数对象则从自身的原型对象中查找），若没有查到，就会从该对象的构造函数的原型对象中查找，这个查找过程就是原型链的体现
+### 原型对象
+
+::: tip
+无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 `prototype` 属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个 `constructor`（构造函数）属性，这个属性是一个指向 `prototype` 属性所在函数的指针。
+
+《JavaScript 高级程序设计（第3版）》 p148（理解原型对象）
+:::
+
+### 组合模式
+结合构造函数模式和原型模式
+```js
+function Foo(name) {
+  this.name = name; // 实例属性
+}
+// 共享方法
+Foo.prototype.getName = function() {
+  return this.name;
+}
+var foo = new Foo('foo');
+```
+
+## 继承
+
+### 原型链
+
+每个函数对象都含有一个原型对象，当访问某个对象的属性时，会先从自身属性查找（函数对象则从自身的原型对象中查找），若没有查到，就会从原型对象中查找，这个查找过程就是原型链的体现
+
+::: tip
+构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。
+
+《JavaScript 高级程序设计（第3版）》 p162（原型链）
+:::
+
+原型链继承
+```js
+function SuperType() {
+  this.value = true; // 实例属性
+}
+// 共享方法
+SuperType.prototype.getSuperValue = function() {
+  return this.value;
+}
+
+function SubType() {
+  this.subValue = false; // 实例属性
+}
+// 继承 SuperType
+// 重写 prototype 导致 constructor 等于 SuperType.prototype.constructor
+SubType.prototype = new SuperType();
+// 共享方法
+SubType.prototype.getSubValue = function() {
+  return this.subValue;
+}
+
+// sub 的 constructor 由于原型链的缘故指向 SuperType 而非 SubType
+var sub = new SubType();
+sub.getSuperValue(); // true
+sub.getSubValue(); // false
+```
+存在的问题：
+1. 父类中**引用类型的实例属性**变成子类的**原型属性**，即实例的共享属性
+    ```JS
+    function SuperType() {
+      this.value = [1]; // 实例属性
+    }
+    function SubType() {}
+    SubType.prototype = new SuperType();
+    var sub1 = new SubType();
+    var sub2 = new SubType();
+    sub1.value.push(2);
+    sub2.value // ==> [1, 2]
+    ```
+2. 创建子类型的实例时，不能很好的向父类型的构造函数中传递参数
 
 ## 防抖
 
