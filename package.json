@@ -22,6 +22,8 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.0.1",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "vuepress": "^1.0.1"
   }
 }
