@@ -344,6 +344,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 ```
 
 ### 三角形
+
 先设置一个宽高均为 0 的盒子，并设置 `border` 看下效果
 ```css
 .box {
@@ -390,6 +391,196 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 </style>
 <div class="css-triangle-box-lr-trans"></div>
+
+所有 `demo` 实现：
+
+<style lang="less">
+.css-triangle-box-all-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  > div {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .box {
+    width: 0;
+    height: 0;
+    border-top: 50px solid #FFB5BF;
+    border-bottom: 50px solid #FFB5BF;
+    border-right: 50px solid #94E8FF;
+    border-left: 50px solid #94E8FF;
+  }
+  .box1 {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid #FFB5BF;
+    border-right: 50px solid #94E8FF;
+    border-left: 50px solid #94E8FF;
+  }
+  .box2 {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid #FFB5BF;
+    border-left: 50px solid #94E8FF;
+  }
+  .box3 {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid #94E8FF;
+  }
+  .box4 {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid #FFB5BF;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+  .box5 {
+      width: 200px;
+      height: 100px;
+      background-color: #FFB5BF;
+      border-radius: 100% 0 0 0;
+  }
+  .box6 {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    border: 5px solid #FFB5BF;
+    border-radius: 5px;
+  }
+  .box6-1 {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    margin-left: -20px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid #FFB5BF;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+  .box6-2 {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    margin-left: -13px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid #ffffff;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+}
+</style>
+<div class="css-triangle-box-all-demo">
+  <div><div class="box"></div>box</div>
+  <div><div class="box1"></div>box1</div>
+  <div><div class="box2"></div>box2</div>
+  <div><div class="box3"></div>box3</div>
+  <div><div class="box4"></div>box4</div>
+  <div><div class="box5"></div>box5</div>
+  <div>
+    <div class="box6">
+      box6
+      <div class="box6-1"></div>
+      <div class="box6-2"></div>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="box"></div>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+<div class="box6">
+  <div class="box6-1"></div>
+  <div class="box6-2"></div>
+</div>
+<style>
+.box {
+  width: 0;
+  height: 0;
+  border-top: 50px solid #FFB5BF;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
+}
+.box1 {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
+}
+.box2 {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-left: 50px solid #94E8FF;
+}
+.box3 {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid #94E8FF;
+}
+.box4 {
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+.box5 {
+    width: 200px;
+    height: 100px;
+    background-color: #FFB5BF;
+    border-radius: 100% 0 0 0;
+}
+.box6 {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border: 5px solid #FFB5BF;
+  border-radius: 5px;
+}
+.box6-1 {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid #FFB5BF;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+.box6-2 {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -13px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid #ffffff;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+}
+</style>
+```
+
+::: tip
+所有示例查看 [jsfiddle](https://jsfiddle.net/coolmrz/tyLjbnfs/)
+:::
 
 ### 阴影 box-shadow
 `box-shadow: h-shadow v-shadow blur spread color inset;`
