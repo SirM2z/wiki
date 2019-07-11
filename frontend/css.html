@@ -7,8 +7,8 @@
     <meta name="description" content="Just playing around">
     
     
-    <link rel="preload" href="/wiki/assets/css/0.styles.bab1c316.css" as="style"><link rel="preload" href="/wiki/assets/js/app.2a8f980b.js" as="script"><link rel="preload" href="/wiki/assets/js/2.eadbd515.js" as="script"><link rel="preload" href="/wiki/assets/js/3.76e847b8.js" as="script"><link rel="prefetch" href="/wiki/assets/js/10.dd88894d.js"><link rel="prefetch" href="/wiki/assets/js/11.2a63029a.js"><link rel="prefetch" href="/wiki/assets/js/12.9e3850d2.js"><link rel="prefetch" href="/wiki/assets/js/13.50bb5c64.js"><link rel="prefetch" href="/wiki/assets/js/14.6e60ba2f.js"><link rel="prefetch" href="/wiki/assets/js/15.f1603543.js"><link rel="prefetch" href="/wiki/assets/js/4.cbb1b72b.js"><link rel="prefetch" href="/wiki/assets/js/5.ea01f67f.js"><link rel="prefetch" href="/wiki/assets/js/6.0e035460.js"><link rel="prefetch" href="/wiki/assets/js/7.2d28c30e.js"><link rel="prefetch" href="/wiki/assets/js/8.6b93acb8.js"><link rel="prefetch" href="/wiki/assets/js/9.5ac3ca5d.js">
-    <link rel="stylesheet" href="/wiki/assets/css/0.styles.bab1c316.css">
+    <link rel="preload" href="/wiki/assets/css/0.styles.c4da0682.css" as="style"><link rel="preload" href="/wiki/assets/js/app.833a8061.js" as="script"><link rel="preload" href="/wiki/assets/js/2.eadbd515.js" as="script"><link rel="preload" href="/wiki/assets/js/3.74986434.js" as="script"><link rel="prefetch" href="/wiki/assets/js/10.dd88894d.js"><link rel="prefetch" href="/wiki/assets/js/11.2a63029a.js"><link rel="prefetch" href="/wiki/assets/js/12.9e3850d2.js"><link rel="prefetch" href="/wiki/assets/js/13.50bb5c64.js"><link rel="prefetch" href="/wiki/assets/js/14.6e60ba2f.js"><link rel="prefetch" href="/wiki/assets/js/15.f1603543.js"><link rel="prefetch" href="/wiki/assets/js/4.cbb1b72b.js"><link rel="prefetch" href="/wiki/assets/js/5.ea01f67f.js"><link rel="prefetch" href="/wiki/assets/js/6.0e035460.js"><link rel="prefetch" href="/wiki/assets/js/7.2d28c30e.js"><link rel="prefetch" href="/wiki/assets/js/8.6b93acb8.js"><link rel="prefetch" href="/wiki/assets/js/9.5ac3ca5d.js">
+    <link rel="stylesheet" href="/wiki/assets/css/0.styles.c4da0682.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/wiki/" class="home-link router-link-active"><!----> <span class="site-name">Ryan's wiki</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/wiki/frontend/html.html" class="nav-link">前端</a></div><div class="nav-item"><a href="/wiki/backend/nestjs.html" class="nav-link">后端</a></div><div class="nav-item"><a href="/wiki/library/html2canvas.html" class="nav-link">库</a></div><div class="nav-item"><a href="/wiki/command/git.html" class="nav-link">命令</a></div><div class="nav-item"><a href="https://sirm2z.github.io/about/" target="_blank" rel="noopener noreferrer" class="nav-link external">
@@ -214,24 +214,18 @@
   <span class="token property">border-right</span><span class="token punctuation">:</span> 50px solid #94E8FF<span class="token punctuation">;</span>
   <span class="token property">border-left</span><span class="token punctuation">:</span> 50px solid #94E8FF<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre></div><div class="css-triangle-box"></div> <p>移除 <code>border-top</code> 效果
-</p><style>
+</code></pre></div><div class="css-triangle-box"></div>
+移除 `border-top` 效果：
+<style>
 .css-triangle-box-rm-top {
-width: 0;
-height: 0;
-border-bottom: 50px solid #FFB5BF;
-border-right: 50px solid #94E8FF;
-border-left: 50px solid #94E8FF;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #FFB5BF;
+  border-right: 50px solid #94E8FF;
+  border-left: 50px solid #94E8FF;
 }
-</style> <div class="css-triangle-box-rm-top"></div><p></p> <p>可以发现，只需要修改对应的方向上的 <code>border</code> 即可实现三角形，如修改左右的 <code>border-color</code> 为 <code>transparent</code></p><style>
-.css-triangle-box-lr-trans {
-width: 0;
-height: 0;
-border-bottom: 50px solid #FFB5BF;
-border-right: 50px solid transparent;
-border-left: 50px solid transparent;
-}
-</style> <div class="css-triangle-box-lr-trans"></div><p></p> <p>所有 <code>demo</code> 实现：</p> <div class="css-triangle-box-all-demo"><div><div class="box"></div>box</div> <div><div class="box1"></div>box1</div> <div><div class="box2"></div>box2</div> <div><div class="box3"></div>box3</div> <div><div class="box4"></div>box4</div> <div><div class="box5"></div>box5</div> <div><div class="box6">
+</style> <div class="css-triangle-box-rm-top"></div> <p>可以发现，只需要修改对应的方向上的 <code>border</code> 即可实现三角形，如修改左右的 <code>border-color</code> 为 <code>transparent</code>，即下例中的 <code>box4</code>。所有 <code>demo</code> 实现：</p> <div class="css-triangle-box-all-demo"><div><div class="box"></div>box</div> <div><div class="box1"></div>box1</div> <div><div class="box2"></div>box2</div> <div><div class="box3"></div>box3</div> <div><div class="box4"></div>box4</div> <div><div class="box5"></div>box5</div> <div><div class="box6">
       box6
       <div class="box6-1"></div> <div class="box6-2"></div></div></div></div> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>box<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>box1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
@@ -388,7 +382,7 @@ box-shadow: 0 0 10px 2px #94E8FF;
   <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
   <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>0.9<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">7/11/2019, 4:31:11 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">7/11/2019, 4:42:19 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/wiki/frontend/html.html" class="prev">
           HTML
@@ -397,6 +391,6 @@ box-shadow: 0 0 10px 2px #94E8FF;
         </a>
         →
       </span></p></div> </main></div><div class="global-ui"><!----></div></div>
-    <script src="/wiki/assets/js/app.2a8f980b.js" defer></script><script src="/wiki/assets/js/2.eadbd515.js" defer></script><script src="/wiki/assets/js/3.76e847b8.js" defer></script>
+    <script src="/wiki/assets/js/app.833a8061.js" defer></script><script src="/wiki/assets/js/2.eadbd515.js" defer></script><script src="/wiki/assets/js/3.74986434.js" defer></script>
   </body>
 </html>
