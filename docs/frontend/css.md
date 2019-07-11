@@ -358,6 +358,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 ```
 <style>
 .css-triangle-box {
+  display: inline-block;
   width: 0;
   height: 0;
   border-top: 50px solid #FFB5BF;
@@ -367,10 +368,10 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 </style>
 <div class="css-triangle-box"></div>
-
-移除 `border-top` 效果
+移除 `border-top` 效果：
 <style>
 .css-triangle-box-rm-top {
+  display: inline-block;
   width: 0;
   height: 0;
   border-bottom: 50px solid #FFB5BF;
@@ -380,19 +381,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 </style>
 <div class="css-triangle-box-rm-top"></div>
 
-可以发现，只需要修改对应的方向上的 `border` 即可实现三角形，如修改左右的 `border-color` 为 `transparent`
-<style>
-.css-triangle-box-lr-trans {
-  width: 0;
-  height: 0;
-  border-bottom: 50px solid #FFB5BF;
-  border-right: 50px solid transparent;
-  border-left: 50px solid transparent;
-}
-</style>
-<div class="css-triangle-box-lr-trans"></div>
-
-所有 `demo` 实现：
+可以发现，只需要修改对应的方向上的 `border` 即可实现三角形，如修改左右的 `border-color` 为 `transparent`，即下例中的 `box4`。所有 `demo` 实现：
 
 <style lang="less">
 .css-triangle-box-all-demo {
