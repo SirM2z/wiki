@@ -232,7 +232,7 @@ console.log(person.friends); // ['a', 'b', 'c', 'd']
 这种思路与寄生式构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数
 ```js
 function createAnother(original) {
-  var clone = object(original); // 通过调用函数创建一个新对象
+  var clone = Object.create(original); // 通过调用函数创建一个新对象
   clone.sayHi = function() {
     console.log('hi');
   }
@@ -249,7 +249,7 @@ personA.sayHi(); // 'hi'
 前面说过**组合继承**的一些问题，这里可以通过引入 **寄生式继承** 避免 **在创建子类型原型的时候** 调用父类的构造函数
 ```js
 function inheritPrototype(subType, superType) {
-  var prototype = object(superType.prototype);
+  var prototype = Object.create(superType.prototype);
   prototype.constructor = subType;
   subType.prototype = prototype;
 }
