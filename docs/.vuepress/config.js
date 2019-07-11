@@ -10,7 +10,8 @@ module.exports = {
       { text: '后端', link: '/backend/nestjs' },
       { text: '库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/git' },
-      { text: '关于我', link: 'https://sirm2z.github.io/about/' },
+      // { text: '关于我', link: 'https://sirm2z.github.io/about/' },
+      { text: 'Ryan\'s BLOG', link: 'https://www.ryanc.top/' },
       { text: 'Github', link: 'https://github.com/SirM2z/wiki' },
     ],
     sidebar: {
