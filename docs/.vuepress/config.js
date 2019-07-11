@@ -1,7 +1,7 @@
 module.exports = {
   title: "Ryan's wiki",
   description: 'Just playing around',
-  base: '/wiki/', // 引用 public 中静态资源： <img :src="$withBase('/logo.png')" alt="foo">
+  base: '',
   markdown: {},
   themeConfig: {
     lastUpdated: '上次更新',
