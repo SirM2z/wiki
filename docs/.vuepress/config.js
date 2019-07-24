@@ -10,7 +10,7 @@ module.exports = {
       { text: '服务端', link: '/backend/nestjs' },
       { text: '数据库', link: '/db/postgresql' },
       { text: '工具库', link: '/library/html2canvas' },
-      { text: '命令', link: '/command/linux' },
+      { text: '命令', link: '/command/' },
       // { text: '关于我', link: 'https://sirm2z.github.io/about/' },
       { text: 'Ryan\'s BLOG', link: 'https://www.ryanc.top/' },
       { text: 'Github', link: 'https://github.com/SirM2z/wiki' },
@@ -38,6 +38,7 @@ module.exports = {
           sidebarDepth: 2,
           children: [
             'nestjs',
+            'nginx',
             'caddy'
           ]
         }
@@ -59,17 +60,6 @@ module.exports = {
           sidebarDepth: 2,
           children: [
             'html2canvas',
-          ]
-        }
-      ],
-      '/command/': [
-        {
-          title: '命令',
-          collapsable: false,
-          sidebarDepth: 2,
-          children: [
-            'linux',
-            'git',
           ]
         }
       ],
