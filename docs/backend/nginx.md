@@ -87,7 +87,7 @@ Let's Encrypt 提供了方便的命令行工具 [certbot](https://certbot.eff.or
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository universe
-sudo add-apt-repository ppa：certbot / certbot
+sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 ```
 
