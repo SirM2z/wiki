@@ -65,6 +65,8 @@ server {
 
 ## 安装
 
+阿里云不用开启 `ufw`，可以用默认防火墙
+
 [安装教程](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04)
 
 若启动不起来，参考如下问题（云服务器提供商做了手脚）
@@ -98,7 +100,7 @@ sudo apt-get install certbot python-certbot-nginx
 
 3. `Nginx` 配置好 80 端口网站以及域名 `server_name`，`Certbot` 可以匹配 `Nginx` 配置中的 `server_name`，并自动配置 `SSL`
 
-4. 通过防火墙允许 `HTTPS`
+4. 通过防火墙允许 `HTTPS`（阿里云不用开启，可以用默认防火墙）
 ```bash
 sudo ufw enable
 sudo ufw allow 'Nginx Full'
