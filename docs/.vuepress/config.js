@@ -7,8 +7,9 @@ module.exports = {
     lastUpdated: '上次更新',
     nav: [
       { text: '前端', link: '/frontend/html' },
-      { text: '后端', link: '/backend/nestjs' },
-      { text: '库', link: '/library/html2canvas' },
+      { text: '服务端', link: '/backend/nestjs' },
+      { text: '数据库', link: '/db/postgresql' },
+      { text: '工具库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/git' },
       // { text: '关于我', link: 'https://sirm2z.github.io/about/' },
       { text: 'Ryan\'s BLOG', link: 'https://www.ryanc.top/' },
@@ -32,17 +33,28 @@ module.exports = {
       ],
       '/backend/': [
         {
-          title: '后端',
+          title: '服务端',
           collapsable: false,
           sidebarDepth: 2,
           children: [
-            'nestjs'
+            'nestjs',
+            'caddy'
+          ]
+        }
+      ],
+      '/db/': [
+        {
+          title: '数据库',
+          collapsable: false,
+          sidebarDepth: 2,
+          children: [
+            'postgresql',
           ]
         }
       ],
       '/library/': [
         {
-          title: '库',
+          title: '工具库',
           collapsable: false,
           sidebarDepth: 2,
           children: [

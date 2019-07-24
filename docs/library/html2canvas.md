@@ -1,7 +1,11 @@
 # html2canvas
 
+## 文档
+[https://html2canvas.hertzen.com/configuration](https://html2canvas.hertzen.com/configuration)
+
 ## 使用
 ```js
+// 网络图片需要配置 useCORS:true
 html2canvas(domElement).then(canvas => {
   const base64 = canvas.toDataURL("image/png");
 });
