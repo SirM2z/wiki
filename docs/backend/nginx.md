@@ -82,7 +82,7 @@ sudo service nginx restart
 
 ### Let's Encrypt 证书申请
 
-Let's Encrypt 提供了方便的命令行工具 [certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx)，`Ubuntu 16.04` 执行命令:
+Let's Encrypt 提供了方便的命令行工具 [certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx)，`Ubuntu 16.04/18.04` 执行命令:
 
 1. 将 `Certbot PPA` 添加到存储库列表
 ```bash
