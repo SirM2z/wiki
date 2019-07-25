@@ -31,13 +31,39 @@ pm2 delete all         # 杀死全部进程
 
 ```bash
 # 把本地的 source.txt 文件拷贝到 192.168.0.10 机器上的 /home/work 目录下
-scp /home/work/source.txt work@192.168.0.10:/home/work/
+scp -P 22 /home/work/source.txt work@192.168.0.10:/home/work/
 
 # 拷贝文件夹，加 -r 参数
-scp -r /home/work/sourcedir work@192.168.0.10:/home/work/
+scp -P 22 -r /home/work/sourcedir work@192.168.0.10:/home/work/
 
 # 显示详情，加 -v 参数
-scp -r -v /home/work/sourcedirwork@www.myhost.com:/home/work/
+scp -P 22 -r -v /home/work/sourcedirwork@www.myhost.com:/home/work/
+```
+
+### `ssh` 端口修改
+
+```bash
+vi /etc/ssh/sshd_config
+## content
+# Port 22
+# Port 60000
+####
+service ssh restart
+```
+
+### `ssh` 走 `socks` 代理
+
+```bash
+ssh -o "ProxyCommand nc -X 5 -x 127.0.0.1:1086 %h %p" user@server.net -p 22
+
+#or
+
+vi ~/.ssh/config
+# 添加内容
+Host www.server.com # 服务器地址
+HostName www.server.com
+ProxyCommand nc -X 5 -x 127.0.0.1:1086 %h %p # socks5://127.0.0.1:1086
+ServerAliveInterval 30
 ```
 
 ## git
@@ -58,4 +84,12 @@ vim ~/.vimrc
 填写以下内容，保存退出
 ```file
 : set number
+```
+
+## nano
+
+```bash
+ctrl + o # 保存
+enter    # 确认
+ctrl + x # 退出
 ```

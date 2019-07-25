@@ -7,7 +7,7 @@ module.exports = {
     lastUpdated: '上次更新',
     nav: [
       { text: '前端', link: '/frontend/html' },
-      { text: '服务端', link: '/backend/nestjs' },
+      { text: '服务端', link: '/backend/' },
       { text: '数据库', link: '/db/postgresql' },
       { text: '工具库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/' },
@@ -28,18 +28,6 @@ module.exports = {
             'react',
             'crossDomain',
             'browser'
-          ]
-        }
-      ],
-      '/backend/': [
-        {
-          title: '服务端',
-          collapsable: false,
-          sidebarDepth: 2,
-          children: [
-            'nestjs',
-            'nginx',
-            'caddy'
           ]
         }
       ],
