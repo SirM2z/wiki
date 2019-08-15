@@ -49,6 +49,7 @@ module.exports = {
           sidebarDepth: 2,
           children: [
             'html2canvas',
+            'vscode',
           ]
         }
       ],
