@@ -9,6 +9,7 @@ module.exports = {
       { text: '前端', link: '/frontend/html' },
       { text: '服务端', link: '/backend/' },
       { text: '数据库', link: '/db/postgresql' },
+      { text: '算法', link: '/algorithm/' },
       { text: '工具库', link: '/library/html2canvas' },
       { text: '命令', link: '/command/' },
       { text: '译文', link: '/translation/promisesaplus' },
