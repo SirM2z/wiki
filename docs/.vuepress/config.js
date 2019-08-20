@@ -27,6 +27,7 @@ module.exports = {
             'css',
             'js',
             'react',
+            'regexp',
             'crossDomain',
             'browser'
           ]
