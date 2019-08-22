@@ -344,6 +344,20 @@ xhr.onreadystatechange = function() {
 xhr.send();
 ```
 
+## 常用的 `Math` 函数
+
+| 方法          | 描述    |
+| ------------ | ------- |
+| Math.abs     | 求绝对值 |
+| Math.ceil    | 向上取整 |
+| Math.floor   | 向下取整 |
+| Math.max     | 求最大值 |
+| Math.min     | 求最小值 |
+| Math.random  | `0-1` 之间的随机数 |
+| Math.sqrt    | 求平方根 |
+| Math.sign    | 求数值的符号，`-100` 为 `-1`，`20` 为 `1` |
+| Math.pow     | 求幂 |
+
 ## Array
 
 ### map <Badge text="不修改原数组"/>
