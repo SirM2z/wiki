@@ -288,9 +288,38 @@ SubType.prototype.getValue = function() {
 
 方法在 n 毫秒后调用，期间有再次调用将重置时间，重新等待 n 毫秒。常用 输入框 远程搜索
 
+```js
+// ---1--2--3---------4--5--6-----------
+// -----------------3---------------6---
+//          | 300ms |       | 300ms |   
+function debounce(func, interval = 300) {
+  let timeout = null;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, arguments);
+    }, interval);
+  };
+}
+```
+
 ## 节流
 
 每隔 n 毫秒调用一次方法，期间所有调用无效。常用 滚动事件 或 窗口 size 变化
+```js
+// ---1--2--3---------4--5--6---------
+// ---1---------------4---------------
+//    |    300ms    |    300ms    |   
+function throttle(func, interval = 300) {
+  let canRun = true;
+  return function () {
+    if (!canRun) return;
+    func.apply(this, arguments);
+    canRun = false;
+    setTimeout(() => {canRun = true}, interval);
+  };
+}
+```
 
 ## ajax 实现
 
