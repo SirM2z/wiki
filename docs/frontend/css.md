@@ -6,6 +6,21 @@
 ## 伪元素
 创建一些不在文档树中的元素，before，双冒号（css3规定）
 
+## 元素各种 `width`
+
+方块样式
+```css
+.box {
+  padding: 20px;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #FFB5BF;
+  border: 6px solid #94E8FF;
+}
+```
+<CSSAllWidth />
+
 ## 两栏布局
 
 ![效果图](https://raw.githubusercontent.com/SirM2z/assets/master/two-row-layout.png)

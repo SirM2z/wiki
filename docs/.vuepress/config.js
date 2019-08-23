@@ -65,23 +65,35 @@ module.exports = {
           ]
         }
       ],
-    },
-    serviceWorker: {
-      // updatePopup: true // Boolean | Object, 默认值是 undefined.
-      // 如果设置为 true, 默认的文本配置将是: 
-      updatePopup: { 
-        message: "有新的内容可用。", 
-        buttonText: "刷新" 
-      }
     }
   },
   plugins: [
     '@vuepress/back-to-top',
+    ['@vuepress/medium-zoom', {
+      options: {
+        margin: 24,
+        background: 'rgba(0, 0, 0, 0.8)',
+      }
+    }],
     [ 
       '@vuepress/google-analytics',
       {
         'ga': 'UA-140679869-2'
       }
-    ]
-  ]
+    ],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: {
+        message: "有新的内容可用。",
+        buttonText: "刷新"
+      }
+    }]
+  ],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': '../assets/img',
+      }
+    }
+  }
 }
