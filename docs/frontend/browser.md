@@ -50,6 +50,14 @@
 ```
 
 ## 性能
+
+1. 合并请求：`nginx` 分支 `Tengine`（合并 `css javascript` 文件），`sprite` 雪碧图
+2. 缓存：`from cache`（`memory disk`），`localstorage`，本地缓存策略，`HTTP` 头（结合业务）
+3. `tcp` 网络优化：`tcp` 调优，`HTTP/2`，`keep-alive`
+4. 硬件：加大带宽，使用 `cdn`（对象存储）
+5. 资源大小：`gzip`，`webp`，`image` 压缩，`cookie` 体积
+6. 预加载：多个 `cdn` 域名，`dns` 预取，异步读取 `js`
+
 雅虎优化规则
 ![雅虎优化规则](~@img/yahoo-performance.png)
 
