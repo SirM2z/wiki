@@ -38,9 +38,9 @@ defer 只对设置 src 的 script 标签起作用
 - 滚动条出现时（触发整个页面重排）
 
 重排会产生大量计算消耗，大多数浏览器通过队列化修改并批量执行来优化重排过程。但以下获取布局信息的方法会强制刷新队列并要求计划任务立刻执行来获取最新的信息，因此尽量避免使用
-- `offsetTop`,`offsetLeft`,`offsetWidth`,`offsetHeight`
-- `scrollTop`,`scrollLeft`,`scrollWidth`,`scrollHeight`
-- `clientTop`,`clientLeft`,`clientWidth`,`clientHeight`
+- `offsetTop / offsetLeft / offsetWidth / offsetHeight`
+- `scrollTop / scrollLeft / scrollWidth / scrollHeight`
+- `clientTop / clientLeft / clientWidth / clientHeight`
 - `getComputedStyle()` (currentStyle in IE)
 
 ### DOM 重绘（repaint）
