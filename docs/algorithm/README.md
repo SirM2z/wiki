@@ -100,3 +100,48 @@ function bubbleSort(arr) {
   return arr;
 }
 ```
+
+### 快速排序
+
+平均时间复杂度：`O(nlogn)`，最坏情况时间复杂度：`O(n^2)`
+
+快速排序使用分治法策略来把一个串行分为两个子串行，快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。
+
+![快速排序](~@img/paixu-kuaisu.gif)
+
+#### `JavaScript` 实现
+
+```js
+function quickSort(arr, left, right) {
+  const len = arr.length;
+  left = typeof left != 'number' ? 0 : left;
+  right = typeof right != 'number' ? len - 1 : right;
+
+  if (left < right) {
+    const partitionIndex = partition(arr, left, right);
+    quickSort(arr, left, partitionIndex - 1);
+    quickSort(arr, partitionIndex + 1, right);
+  }
+  return arr;
+}
+
+// 分区操作
+function partition(arr, left ,right) {
+  const pivot = left; // 设定基准值（pivot）
+  let index = pivot + 1;
+  for (var i = index; i <= right; i++) {
+    if (arr[i] < arr[pivot]) {
+      swap(arr, i, index);
+      index++;
+    }
+  }
+  swap(arr, pivot, index - 1);
+  return index - 1;
+}
+
+function swap(arr, i, j) {
+  var temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+```
