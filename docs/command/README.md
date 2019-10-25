@@ -27,6 +27,16 @@ pm2 delete all         # 杀死全部进程
 
 ## linux
 
+### `cat` 显示文件内容
+
+### `pbcopy(mac)` 将结果输出到剪贴板中
+```bash
+# 将 home 目录中的文件列表拷贝到系统的剪切板中
+ls ~ | pbcopy
+# 将文档内容拷贝到系统的剪贴板中
+pbcopy < bot.txt
+```
+
 ### `scp` 上传文件
 
 ```bash
@@ -75,6 +85,13 @@ git commit --amend
 ```
 
 ## vim
+
+### 撤销操作
+
+```bash
+u # 撤销操作
+Ctrl+r # 回复操作
+```
 
 ### 永久设置行号
 
