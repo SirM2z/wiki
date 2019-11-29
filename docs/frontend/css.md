@@ -21,6 +21,66 @@
 ```
 <CSSAllWidth />
 
+## `z-index`
+
+### 两个原则
+1. 非层叠上下文：谁大谁上
+2. 层叠上下文：后来居上
+
+### 非层叠上下文
+```html
+<div style="position:relative; z-index:auto;">
+  <!-- 红 -->
+  <div style="background-color:#FFB5BF; width:100px; height:50px; position:absolute; z-index:2;"></div>
+</div>
+<div style="position:relative; z-index:auto;">
+  <!-- 蓝 -->
+  <div style="background-color:#94E8FF; width:50px; height:100px; position:absolute; z-index:1;"></div>
+</div>
+```
+<div style="height:100px;">
+  <div style="position:relative; z-index:auto;">
+    <div style="background-color:#FFB5BF; width:100px; height:50px; position:absolute; z-index:2;"></div>
+  </div>
+  <div style="position:relative; z-index:auto;">
+    <div style="background-color:#94E8FF; width:50px; height:100px; position:absolute; z-index:1;"></div>
+  </div>
+</div>
+
+`z-index:auto` 是一个普通的元素，遵循**谁大谁上**
+
+### 层叠上下文
+```html
+<div style="position:relative; z-index:0;">
+  <!-- 红 -->
+  <div style="background-color:#FFB5BF; width:100px; height:50px; position:absolute; z-index:2;"></div>
+</div>
+<div style="position:relative; z-index:0;">
+  <!-- 蓝 -->
+  <div style="background-color:#94E8FF; width:50px; height:100px; position:absolute; z-index:1;"></div>
+</div>
+```
+<div style="height:100px;">
+  <div style="position:relative; z-index:0;">
+    <div style="background-color:#FFB5BF; width:100px; height:50px; position:absolute; z-index:2;"></div>
+  </div>
+  <div style="position:relative; z-index:0;">
+    <div style="background-color:#94E8FF; width:50px; height:100px; position:absolute; z-index:1;"></div>
+  </div>
+</div>
+
+将 `z-index:auto` 改为 `z-index:0` 之后，两个父元素都变为层叠上下文，遵循**后来居上**，子元素的 `z-index` 失去作用
+
+### 创建层叠上下文元素
+
+- 根元素 `Html`
+- `z-index` 值为数值的定位元素的传统层叠上下文
+- 其他 `CSS3` 属性
+
+:::tip
+参考[深入理解CSS中的层叠上下文和层叠顺序 -- 张鑫旭](https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/)
+:::
+
 ## 两栏布局
 
 ![效果图](https://raw.githubusercontent.com/SirM2z/assets/master/two-row-layout.png)

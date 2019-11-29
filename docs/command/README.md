@@ -76,6 +76,52 @@ ProxyCommand nc -X 5 -x 127.0.0.1:1086 %h %p # socks5://127.0.0.1:1086
 ServerAliveInterval 30
 ```
 
+### `lsof`
+
+```bash
+# 显示开启文件 abc.txt 的进程
+lsof abc.txt
+
+# 列出所有的网络连接
+lsof -i
+
+# 列出80端口目前打开的文件列表
+lsof -i :80
+
+# 列出所有的 TCP 网络连接信息
+lsof -i tcp
+
+# 列出80端口 TCP 协议的所有连接信息
+lsof -i tcp:80
+
+# 列出所有的 UDP 网络连接信息
+lsof -i udp
+
+# 列出以 ngin 开头的进程打开的文件列表
+lsof -c ngin
+
+# 列出指定进程打开的文件列表
+lsof -p 20711
+
+# 列出指定用户打开的文件列表
+lsof -u uasp
+
+# 将所有的TCP网络连接信息和指定用户打开的文件列表信息一起输出
+lsof -u uasp -i tcp
+
+# 将指定用户打开的文件列表信息，同时是TCP网络连接信息的一起输出；注意和上一条命令进行对比，-a 意思为 and
+lsof -a -u uasp -i tcp
+
+# 列出目录下被进程打开的文件列表
+lsof +d /usr/local/
+
+# 递归搜索目录下被进程打开的文件列表
+lsof +D /usr/local/
+
+# 列出目前连接到主机 peida.linux 上端口为20，21，22，25，53，80相关的所有文件信息，且每隔3秒不断的执行 lsof 指令
+lsof -i @peida.linux:20,21,22,25,53,80 -r 3
+```
+
 ## git
 
 ### 修改上次 commit
